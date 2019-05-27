@@ -20,7 +20,12 @@ function calc() {
     number[i] = Math.pow(n, 3);
     result.innerHTML += '<h4><span class="badge badge-primary">' + n + '^3 = ' + number[i] + '</span></h4>';
     i++;
-    document.getElementById('indice').innerHTML = (i + 1);
-    document.getElementById('number').value = "";
-    //console.log(number);
+
+    if (i < 10) {
+        document.getElementById('indice').innerHTML = (i + 1);
+        document.getElementById('number').value = "";
+    } else {
+        document.getElementById('card').style.display = "none";
+        console.log(number);
+    }
 }
