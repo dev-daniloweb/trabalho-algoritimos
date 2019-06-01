@@ -22,24 +22,42 @@
                 valores armazenados.
             </div>
 
-            <div class="row">
-                <div style="border: none" class="card col-3 mt-5">
+            <form id="form" name="form" style="border: none" class="card col-5 mt-5" action="trabalho.php" method="post">
+                <div id="card">
                     <div class="form-group">
-                        <label for="">Digite o <span id="indice">1</span>° número:</label>
-                        <input type="text" class="form-control" id="number" placeholder="">
-                    </div>
+                        <label for="">Digite um número:</label>
+                        <input type="text" class="form-control" id="number" name="number" placeholder="">
+                    </div> 
+                    <input type="hidden" id="action" name="action" />                       
                     <div class="form-group">
-                        <butto onclick="submit()" type="button" class="btn btn-block btn-dark">Enviar</button>
+                        <button onclick="teste(document.getElementById('number'))" type="button" class="btn btn-block btn-dark">Enviar</button>                        
                     </div>
                 </div>
-                <div class="col ml-5 mt-5">
-                    <p id="result">
-                        <div style="display: none" id="spin" class="spinner-border text-primary" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </p>
-                </div>
-            </div>
+            </form>               
         </div>
+
+        <script>
+            let vet = [];
+            let i = 0;
+
+            function teste(number) {
+                vet[i] = number;
+
+                if (i == 2) {
+                    doPost(vet, 'salvar');
+                }
+
+                i++;
+            }
+
+            function doPost(formName, actionName)
+            {
+                var hiddenControl = document.getElementById('action');
+                var theForm = document.getElementById(formName);
+
+                hiddenControl.value = actionName;
+                theForm.submit();
+            }
+        </script>
     </body>
 </html>
