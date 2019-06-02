@@ -13,7 +13,7 @@ public class trabalho {
 		do {
 			try {
 				for (int i = n; i < vetor.length; i++) {
-					num = Integer.parseInt(JOptionPane.showInputDialog("Digite o " + (i + 1) + "° número:"));
+					num = Integer.parseInt(JOptionPane.showInputDialog("Digite o " + (i + 1) + "Â° numero:"));
 					vetor[i] = (int)Math.pow(num, 3);
 					saida += num + "^3 = " + vetor[i] + "\n";
 					n++;
@@ -27,11 +27,11 @@ public class trabalho {
 						break;
 					
 					case "For input string: \"\"":
-						JOptionPane.showMessageDialog(null, "Campo Obrigatório!");
+						JOptionPane.showMessageDialog(null, "Campo Obrigatorio!");
 						break;
 						
 					default:
-						JOptionPane.showMessageDialog(null, "Número inválido!");
+						JOptionPane.showMessageDialog(null, "Numero invalido!");
 						break;
 				}
 			}
