@@ -22,41 +22,63 @@
                 valores armazenados.
             </div>
 
-            <form id="form" name="form" style="border: none" class="card col-5 mt-5" action="trabalho.php" method="post">
-                <div id="card">
-                    <div class="form-group">
-                        <label for="">Digite um número:</label>
-                        <input type="text" class="form-control" id="number" name="number" placeholder="">
-                    </div> 
-                    <input type="hidden" id="action" name="action" />                       
-                    <div class="form-group">
-                        <button onclick="teste(document.getElementById('number'))" type="button" class="btn btn-block btn-dark">Enviar</button>                        
+            <div class="row">
+                <form id="form" name="form" style="border: none" class="card col-5 mt-5" action="trabalho.php" method="post">
+                    <div id="card">
+                        <div class="form-group">
+                            <label for="">Digite o <span id="i"></span>° número:</label>
+                            <input type="text" class="form-control" id="number" name="number" placeholder="">
+                        </div> 
+                        <input type="hidden" id="vet" name="vet" />
+                        <input type="hidden" id="action" name="action" />                       
+                        <div class="form-group">
+                            <button onclick="input(document.getElementById('number').value)" type="button" class="btn btn-block btn-dark">Enviar</button>                        
+                        </div>
                     </div>
+                </form>
+                <div class="col ml-5 mt-5">
+                    <p id="result">
+                        
+                    </p>
                 </div>
-            </form>               
+            </div>           
         </div>
 
         <script>
-            let vet = [];
-            let i = 0;
+            if (localStorage.length > 0) {
+                for (let index = 0; index < localStorage.length; index++) {
+                    document.getElementById('result').innerHTML += '<h4><span class="badge badge-primary">' + localStorage.getItem('vetor['+index+']') + '</span></h4>'                    
+                }
+                document.getElementById('form').style.display = 'none';
+            } else {
 
-            function teste(number) {
-                vet[i] = number;
+                let vet = [];
+                let i = 0;
 
-                if (i == 2) {
-                    doPost(vet, 'salvar');
+                function input(number) 
+                {
+                    vet[i] = number;               
+                    
+                    if (i == 9) {
+                        document.getElementById('vet').value = vet;
+                        post('form', 'calc');
+                    }
+
+                    i++;
+                    document.getElementById('i').innerHTML = i + 1;
+                    document.getElementById('number').value = "";
                 }
 
-                i++;
-            }
+                function post(formName, actionName)
+                {
+                    var hiddenControl = document.getElementById('action');
+                    var theForm = document.getElementById(formName);
 
-            function doPost(formName, actionName)
-            {
-                var hiddenControl = document.getElementById('action');
-                var theForm = document.getElementById(formName);
+                    hiddenControl.value = actionName;
+                    theForm.submit();
+                }
 
-                hiddenControl.value = actionName;
-                theForm.submit();
+                document.getElementById('i').innerHTML = i + 1;
             }
         </script>
     </body>
