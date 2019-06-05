@@ -2,12 +2,11 @@ let number = [];
 let i = 0;
 let n;
 
-const number = document.getElementById('number');
 const result = document.getElementById('result');
 const spin = document.getElementById('spin');
 
 function submit() {
-    n = number.value;
+    n = document.getElementById('number').value;
     n != "" && !isNaN(n) ? loading() : alert('Digite um número!');
 }
 
@@ -24,7 +23,7 @@ function calc() {
 
     if (i < 10) {
         document.getElementById('indice').innerHTML = (i + 1);
-        number.value = "";
+        document.getElementById('number').value = "";
     } else {
         document.getElementById('card').style.display = "none";
         console.log(number);
