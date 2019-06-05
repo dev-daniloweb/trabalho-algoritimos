@@ -1,48 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Trabalho de Algoritmos</title>
+let number = [];
+let i = 0;
+let n;
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
-    <body>
-        <div class="container">
-            <h2 class="text-center mt-5">
-                Trabalho de Algoritmos - JavaScript
-            </h2>
+const number = document.getElementById('number');
+const result = document.getElementById('result');
+const spin = document.getElementById('spin');
 
-            <div class="mt-4">
-                <b>1)</b> Escreva um algoritmo que receba dez números do usuário 
-                e armazene em um vetor o cubo de cada número. 
-                Após isso, o algoritmo deve imprimir todos os 
-                valores armazenados.
-            </div>
+function submit() {
+    n = number.value;
+    n != "" && !isNaN(n) ? loading() : alert('Digite um número!');
+}
 
-            <div class="row">
-                <div id="card" style="border: none" class="card col-3 mt-5">
-                    <div class="form-group">
-                        <label for="">Digite o <span id="indice">1</span>° número:</label>
-                        <input type="text" class="form-control" id="number" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <butto onclick="submit()" type="button" class="btn btn-block btn-dark">Enviar</button>
-                    </div>
-                </div>
-                <div class="col ml-5 mt-5">
-                    <p id="result">
-                        <div style="display: none" id="spin" class="spinner-border text-primary" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- JS file -->
-        <script src="trabalho.js"></script>
-    </body>
-</html>
+function loading() {
+    spin.style.display = "block";
+    setTimeout(calc, 700);
+}
+
+function calc() {
+    spin.style.display = "none";
+    number[i] = Math.pow(n, 3);
+    result.innerHTML += '<h4><span class="badge badge-primary">' + n + '^3 = ' + number[i] + '</span></h4>';
+    i++;
+
+    if (i < 10) {
+        document.getElementById('indice').innerHTML = (i + 1);
+        number.value = "";
+    } else {
+        document.getElementById('card').style.display = "none";
+        console.log(number);
+    }
+}
