@@ -57,16 +57,21 @@
 
                 function input(number) 
                 {
-                    vet[i] = number;               
-                    
-                    if (i == 9) {
-                        document.getElementById('vet').value = vet;
-                        post('form', 'calc');
-                    }
+                    if (number != "" && !isNaN(number)) {
+                        vet[i] = number;               
+                        
+                        if (i == 9) {
+                            document.getElementById('vet').value = vet;
+                            post('form', 'calc');
+                        }
 
-                    i++;
-                    document.getElementById('i').innerHTML = i + 1;
-                    document.getElementById('number').value = "";
+                        i++;
+                        document.getElementById('i').innerHTML = i + 1;
+                        document.getElementById('number').value = "";
+                    } else {
+                        alert("Digite um número!");
+                        document.getElementById('number').value = "";
+                    }
                 }
 
                 function post(formName, actionName)
