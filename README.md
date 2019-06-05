@@ -1,13 +1,13 @@
 # Trabalho de Algoritmos
 
-* Clone:
+Clone:
 
-HTTP
+* HTTP
 ```
 $ git clone https://github.com/dev-daniloweb/trabalho-algoritmos.git .
 ```
----
-SSH
+
+* SSH
 ```
 $ git clone git@github.com:dev-daniloweb/trabalho-algoritmos.git .
 ```
