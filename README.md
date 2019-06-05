@@ -1,1 +1,1 @@
-# trabalho-algoritimos
+# Trabalho de Algoritmos
